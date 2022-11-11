@@ -112,6 +112,7 @@ impl Runtime {
 
 impl Drop for Runtime {
     fn drop(&mut self) {
+        println!("tikio-uring Runtime drop");
         // drop tasks
         unsafe {
             ManuallyDrop::drop(&mut self.local);

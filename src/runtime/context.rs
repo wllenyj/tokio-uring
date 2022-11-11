@@ -9,6 +9,12 @@ pub(crate) struct RuntimeContext {
     _phantom: PhantomUnsendUnsync,
 }
 
+impl Drop for RuntimeContext {
+    fn drop(&mut self) {
+        println!("tokio-uring RuntimeContext drop");
+    }
+}
+
 impl RuntimeContext {
     /// Construct the context with an uninitialized driver.
     pub(crate) const fn new() -> Self {
