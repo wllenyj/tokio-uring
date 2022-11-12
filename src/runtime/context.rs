@@ -17,7 +17,8 @@ impl Drop for RuntimeContext {
 
 impl RuntimeContext {
     /// Construct the context with an uninitialized driver.
-    pub(crate) const fn new() -> Self {
+    pub(crate) fn new() -> Self {
+        println!("tokio-uring RuntimeContext new -->");
         Self {
             driver: RefCell::new(None),
             _phantom: PhantomData,

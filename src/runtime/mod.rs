@@ -57,6 +57,7 @@ pub fn spawn<T: Future + 'static>(task: T) -> tokio::task::JoinHandle<T::Output>
 impl Runtime {
     /// Create a new tokio_uring runtime on the current thread
     pub fn new(b: &crate::Builder) -> io::Result<Runtime> {
+        println!("tokio-uring Runtime new -->");
         let rt = tokio::runtime::Builder::new_current_thread()
             .on_thread_park(|| {
                 CONTEXT.with(|x| {
